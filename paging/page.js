@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
     changeShow();
     pageChange();
   }
+
+  /**
+   * 改变页码的时候，列值也变化，并且控制按钮的点击样式
+   */
   function pageChange(){
     var text = '';
     for (var k = (initPage-1)*nums+1; k < 1 +(initPage*nums); k++) {
@@ -47,8 +51,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     li.className = 'active';
   }
+
+  /**
+   * 根据所点击li的 innerText 的值不同，执行不同的操作
+   * @param e 因为Firefox不支持 window.event，而支持e
+   * @returns {boolean}
+   */
   function pageGo(e){
-    console.log('123')
     e = e || window.event;
     var ind = e.target || e.srcElement;
     if(ind.localName == 'ul'){ //如果点击区域没有聚焦在li上
@@ -61,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
         initPage = initPage - 1;
       }
     }else if(ind.innerText == '>'){ //点击下一页的时候，如果当前是最后一页，就不翻页了
-      //console.log(initPage+'---'+last);
       if(initPage == last){
         return false;
       }else{
@@ -75,8 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
     changeShow();
     pageChange();
   }
+
+  /**
+   * 根据initPage,last的值来确定按钮的显示样式
+   * @returns {number}
+   */
   function changeShow(){
-    ele_page.innerHTML = null;
+    ele_page.innerHTML = '';
     var pageList = '<li id="pre">&lt;</li><li id="li_1" class="active">1</li>';
     if (last < 6) {
       if(last == 1){
