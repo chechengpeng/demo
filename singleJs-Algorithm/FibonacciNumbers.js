@@ -12,6 +12,10 @@ function sumFibs(num) {
   return sumFibs(num - 1) + sumFibs(num - 2);
 }
 //很快的执行完
+/**
+ *
+ * @param n
+ */
 function fib(n) {
   var fib_n = function (curr, next, n) {
     console.log('b');
