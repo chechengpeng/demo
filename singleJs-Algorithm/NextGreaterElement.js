@@ -18,24 +18,37 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-var nextGreaterElement = function(findNums, nums) {
-    var reArr = [];
-    for(var i=0;i<findNums.length;i++){
-        newNums = nums.slice(nums.indexOf(findNums[i])+1); 
-        if (newNums.length === 0) {
-            reArr.push(-1)
-        } else {
-            for( var j=0;j<newNums.length;j++){
-                if(newNums[j]>findNums[i]){
-                    reArr.push(newNums[j]);
-                    break;
-                }
-                if(j === newNums.length-1){
-                    reArr.push(-1)
-                }
-            }
+var nextGreaterElement = function (findNums, nums) {
+  var reArr = [];
+  for (var i = 0; i < findNums.length; i++) {
+    newNums = nums.slice(nums.indexOf(findNums[i]) + 1);
+    if (newNums.length === 0) {
+      reArr.push(-1)
+    } else {
+      for (var j = 0; j < newNums.length; j++) {
+        if (newNums[j] > findNums[i]) {
+          reArr.push(newNums[j]);
+          break;
         }
-
+        if (j === newNums.length - 1) {
+          reArr.push(-1)
+        }
+      }
     }
-    return reArr;
+
+  }
+  return reArr;
+};
+
+// some good solution
+var nextGreaterElement = function (findNums, nums) {
+  return findNums.map(n => {
+    let found = nums.indexOf(n);
+    // find the next greater element's index
+    while (nums[++found] < n);
+    // -1 if not found
+    if (found >= nums.length) found = -1;
+    else found = nums[found];
+    return found;
+  });
 };
