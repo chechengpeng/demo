@@ -2,6 +2,21 @@
  * @param {number[]} nums
  * @return {number[]}
  */
+// Accepted, but runtime is too long
+var findDisappearedNumbers = function (nums) {
+  var len = nums.length;
+  nums = nums.sort(function(a,b){return a-b})
+  nums = Array.from(new Set(nums))
+  for (var i = 1; i <= len; i++) {
+    if(nums.indexOf(i)===-1){
+      nums.push(i)
+    } else {
+      nums.splice(nums.indexOf(i),1)    
+    }
+  }
+  return nums;
+};
+
 // wrong two: Time Limit Exceeded
 var findDisappearedNumbers = function (nums) {
   var aa = [];
