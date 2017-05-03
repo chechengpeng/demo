@@ -18,6 +18,7 @@ var findLUSlength = function (a, b) {
   var i = 1;
   var j = 0;
   while(i<a.length){
+    console.log(!b.includes(a.substring(j,i)));
     while(!b.includes(a.substring(j,i)) && i<a.length){
       i++;
     }
@@ -29,4 +30,4 @@ console.log( Math.max.apply(null, arr))
 return Math.max.apply(null, arr)
 };
 
-findLUSlength('abaefff','cdcf')
+findLUSlength('qweabaefff','qwecdcf')
