@@ -16,5 +16,4 @@ function findSqu(mid,last,num) {
   } else if (mid * mid < num) {
     mid += Math.floor((last - mid) / 2)
   }
-
 }
