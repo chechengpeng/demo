@@ -23,3 +23,15 @@ var removeDuplicates = function(nums) {
     return nums.length;
 };
 removeDuplicates([1,1,2,2,3])
+
+// 更好的方法 双指针
+var removeDuplicates = function(nums) {
+    var j = 1;
+    for (var i = 1; i < nums.length; i++) {
+        if (nums[i - 1] !== nums[i]) {
+            nums[j] = nums[i];
+            j++
+        }
+    }
+    return j;
+};
