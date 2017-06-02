@@ -2,6 +2,11 @@
  * @param {number[]} nums
  * @return {number[]}
  */
+
+
+
+
+// 超时
 var findDuplicates = function(nums) {
     var i=0;
     while(i<nums.length){
@@ -13,4 +18,16 @@ var findDuplicates = function(nums) {
         }
     }
     return nums
+};
+// 超时
+var findDuplicates = function(nums) {
+    var ons = [];
+    for(var i=0;i<nums.length;i++){
+        var ind = nums.indexOf(nums[i],i+1);
+        if(ind>-1){
+            nums.splice(ind,1);
+            ons.push(nums[i]);
+        }
+    }
+    return ons;
 };
