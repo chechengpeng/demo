@@ -14,9 +14,7 @@ Output: "bb"
  * @return {string}
  */
 var longestPalindrome = function(s) {
-  if(pal(s)) return s;
-
-    
+  if(pal(s)) return s;    
 };
 
 function pal(s){
@@ -38,4 +36,28 @@ function pal(s){
     }
   }
 }
-console.log(pal('a'))
+console.log(pal('cbbd'))
+
+// Time Limit Exceeded
+var longestPalindrome = function (str) {
+  var len = str.length;
+  for (let i = 0; i < len; i++) {
+    for (let j = 0; j <= i; j++) {
+      var str2 = str.substr(j, len - i)
+      if (isPal(str2)) {
+        return str2;
+      }
+    }
+  }
+
+};
+function isPal(str) {
+  var len = str.length;
+  if(len % 2 !== 0){
+    str = str.slice(0, Math.floor(len/2)) + str.slice(Math.floor(len/2)+1)
+  }
+  var ostr = str.slice(str.length/2).split('').reverse().join('')
+  return (str.slice(0,str.length/2) == ostr)
+}
+console.log(isPal('abcba'))
+console.log(longestPalindrome('afdadfabbdbba'))
