@@ -21,6 +21,7 @@ var merge1 = function(nums1, m, nums2, n) {
   }
   console.log(nums1)
 }
+// modify nums1 in-place instead 则使用 splice 方法插入  sort 方法排序
 var merge = function(nums1, m, nums2, n) {
   if (n < nums2.length) {
     nums2.splice(n - 1, n)
